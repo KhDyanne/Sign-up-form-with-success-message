@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="main">
+        <div class="info">         
+            <h1>Stay updated!</h1> 
+            <p>Join 60,000+ product managers receiving monthly updates on:</p>
+            <div class="lists">
+              <div class="list"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg><span>Product discovery and building what matters</span></div>
+              <div class="list"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg><span>Measuring to ensure updates are a success</span></div>
+              <div class="list"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21"><g fill="none"><circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/><path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/></g></svg><span>And much more!</span></div>
+            </div>           
+                 
+            <form action="success_message.html" id="subscriptionForm">
+              <div class="label">
+                <label for="email">Email address</label>
+                <span id="emailError" class="error">Valid email required</span>
+              </div>
+              <input 
+                 type="text" 
+                 id="email"   
+                 name="email"
+                 placeholder="email@company.com" 
+                 required
+              >
+              
+              <input type="submit" id="btn" value="Subscribe to monthly newsletter">
+            </form>            
+        </div>
+    
+        <div class="img">
+          <img src="./assets/images/illustration-sign-up-desktop.svg" class="desktop" alt="desktop">
+          <img src="./assets/images/illustration-sign-up-mobile.svg" class="mobile" alt="mobile">
+        </div>
+
+    </div>
+  
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </div>
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('subscriptionForm');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('emailError');
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const userEmail = emailInput.value.trim();
+
+        if (userEmail === '' || !isValidEmail(userEmail)) {
+            emailError.style.display = 'block';
+            emailInput.style.color='red';
+            emailInput.style.borderColor='red';
+            emailInput.style.backgroundColor='#FFB0B0';
+        } else {
+            window.location.href = 'success_message.html?email=' + encodeURIComponent(userEmail);
+        }
+    });
+
+    emailInput.addEventListener('input', function () {
+        emailError.style.display = 'none';
+        emailInput.style.color = '';
+        emailInput.style.borderColor = '';
+        emailInput.style.backgroundColor = '';
+    });
+
+    function isValidEmail(email) {
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});
+
+    
+  </script>
+</body>
+
+</html>

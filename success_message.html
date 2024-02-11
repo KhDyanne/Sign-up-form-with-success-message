@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success</title>
+  <link rel="stylesheet" href="success.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="main">
+      <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+          <g fill="none">
+            <circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155" />
+            <path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8" />
+          </g>
+        </svg>
+        <h1>Thanks for subscribing!</h1>
+
+        <p>A confirmation email has been sent to <b id="user-email">ash@loremcompany.com</b>.
+          Please open it and click the button inside to confirm your subscription.</p>
+      </div>
+      <div class="btn">
+        <button type="submit"> Dismiss message</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userEmail = urlParams.get('email');
+    const userEmailElement = document.getElementById('user-email');
+    if (userEmail) {
+      userEmailElement.textContent = userEmail;
+    }
+  </script>
+  
+</body>
+
+</html>
